@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: asterisk
+spec:
+ hostNetwork: true
+ containers:
+  - image: radersolutions/docker-ratel
+    name: asterisk
+    volumeMounts:
+      - name: etc-asterisk
+        mountPath: /etc/asterisk
+      - name: var-spool-asterisk
+        mountPath: /var/spool/asterisk
+ volumes:
+  - name: etc-asterisk
+    azureFile:
+      secretName: storagesecret
+      shareName: etc-asterisk
+      readOnly: false
+  - name: var-spool-asterisk
+    azureFile:
+      secretName: storagesecret
+      shareName: var-spool-asterisk
+      readOnly: false
+      

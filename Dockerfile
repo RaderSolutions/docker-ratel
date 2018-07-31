@@ -1,6 +1,6 @@
 FROM centos:centos7
 LABEL Maintainer = "Tim Fournet tfournet@radersolutions.com"
-ENV build_date 2018-07-25
+ENV build_date 2018-07-30
 
 RUN yum update -y
 RUN yum install epel-release kernel-headers gcc gcc-c++ cpp ncurses bzip2 patch ncurses-devel libxml2 libxml2-devel sqlite sqlite-devel openssl-devel newt-devel kernel-devel libuuid-devel net-snmp-devel xinetd tar make git jansson-devel -y 
@@ -30,7 +30,7 @@ RUN menuselect/menuselect \
 # Continue with a standard make.
 RUN make 1> /dev/null
 RUN make install 1> /dev/null
-RUN make basic-pbx 1> /dev/null
+#RUN make basic-pbx 1> /dev/null
 WORKDIR /
 
 # Update max number of open files.
