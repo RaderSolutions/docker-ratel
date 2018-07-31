@@ -70,4 +70,4 @@ which kubectl || az aks install-cli
 ### Deploy pods to cluster
 kubectl create -f https://https://github.com/RaderSolutions/docker-ratel/ratel-aks.yaml
 
-
+echo "Complete"
