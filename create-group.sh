@@ -32,6 +32,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 # Create the file share
 az storage share create -n etc-asterisk 
 az storage share create -n var-spool-asterisk
+az storage share create -n root
 
 # Get storage account key
 STORAGE_KEY=$(az storage account keys list --resource-group ${AKS_PERS_RESOURCE_GROUP} --account-name ${AKS_PERS_STORAGE_ACCOUNT_NAME} --query "[0].value" -o tsv)

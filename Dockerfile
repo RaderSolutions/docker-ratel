@@ -7,6 +7,9 @@ RUN yum install epel-release kernel-headers gcc gcc-c++ cpp ncurses bzip2 patch 
 
 ENV AUTOBUILD_UNIXTIME 1418234402
 
+# Generate root's SSH Key if necessary
+RUN if  [ ! -f ~/.ssh/id_rsa ] ; then ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa; fi
+
 # Download asterisk.
 WORKDIR /tmp/
 RUN git clone -b 15 http://gerrit.asterisk.org/asterisk asterisk-15

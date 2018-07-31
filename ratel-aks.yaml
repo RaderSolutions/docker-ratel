@@ -12,6 +12,8 @@ spec:
         mountPath: /etc/asterisk
       - name: var-spool-asterisk
         mountPath: /var/spool/asterisk
+      - name: root
+        mountPath: /root
  volumes:
   - name: etc-asterisk
     azureFile:
@@ -23,4 +25,15 @@ spec:
       secretName: storagesecret
       shareName: var-spool-asterisk
       readOnly: false
+  - name: root
+    azureFile:
+      secretName: storagesecret
+      shareName: root
+      readOnly: false
+    mountOptions:
+      - dir_mode=0700
+      - file_mode=0600
+      - uid=0
+      - gid=0
+      
       
