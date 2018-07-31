@@ -71,3 +71,5 @@ which kubectl || az aks install-cli
 kubectl create -f https://https://github.com/RaderSolutions/docker-ratel/ratel-aks.yaml
 
 echo "Complete"
+
+
