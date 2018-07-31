@@ -3,7 +3,7 @@ LABEL Maintainer = "Tim Fournet tfournet@radersolutions.com"
 ENV build_date 2018-07-31
 
 RUN yum update -y
-RUN yum install epel-release kernel-headers gcc gcc-c++ cpp ncurses bzip2 patch ncurses-devel libxml2 libxml2-devel sqlite sqlite-devel openssl-devel newt-devel kernel-devel libuuid-devel net-snmp-devel xinetd tar make git jansson-devel -y 
+RUN yum install epel-release kernel-headers gcc gcc-c++ cpp ncurses bzip2 patch ncurses-devel libxml2 libxml2-devel sqlite sqlite-devel openssl-devel newt-devel kernel-devel libuuid-devel net-snmp-devel xinetd tar make git jansson-devel unixODBC mysql-connector-odbc -y 
 
 ENV AUTOBUILD_UNIXTIME 1418234402
 
@@ -19,7 +19,7 @@ RUN ./configure --libdir=/usr/lib64 1> /dev/null
 # Remove the native build option
 RUN make menuselect.makeopts
 RUN menuselect/menuselect \
-  --disable BUILD_NATIVE \
+  --disable BUILD_NATIVE \cat 
   --enable cdr_csv \
   --enable chan_sip \
   --enable res_snmp \
